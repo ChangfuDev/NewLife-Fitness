@@ -33,12 +33,12 @@ public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocke
     }
 
 
-    @Bean // 标识为websocket处理器的Bean
+    @Bean 
     public WebSocketHandler myHandler() {
         return new SendInfoHandler();
     }
     
-    @Bean // 标识为websocket处理器的Bean
+    @Bean 
     public SystemInfoHandler getInfo() {
         return new SystemInfoHandler();
     }
