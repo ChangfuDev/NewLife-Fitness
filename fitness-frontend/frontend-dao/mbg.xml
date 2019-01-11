@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<!-- 去除注解 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/y_jianshen" userId="root"
+			password="a131421a">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- POJO生成 -->
+		<javaModelGenerator
+			targetPackage="com.newlife.fitness.frontend.entity"
+			targetProject="..\\frontend-entity\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- sql映射文件 -->
+		<sqlMapGenerator targetPackage="com.newlife.fitness.frontend.dao.mapper"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- dao接口生成的地方 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.newlife.fitness.frontend.dao" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+		<!-- 要逆向的表 -->
+		<table tableName="auditing_type" domainObjectName="AuditingType"></table>
+		<table tableName="comments" domainObjectName="Comments"></table>
+		<table tableName="course" domainObjectName="Course"></table>
+		<table tableName="course_video" domainObjectName="CourseVideo"></table>
+		<table tableName="d_user" domainObjectName="DUser"></table>
+		<table tableName="f_user" domainObjectName="FUser"></table>
+		<table tableName="forum" domainObjectName="Forum"></table>
+		<table tableName="train" domainObjectName="Train"></table>
+		<table tableName="user_course" domainObjectName="UserCourse"></table>
+		<table tableName="user_train" domainObjectName="UserTrain"></table>
+	</context>
+</generatorConfiguration>

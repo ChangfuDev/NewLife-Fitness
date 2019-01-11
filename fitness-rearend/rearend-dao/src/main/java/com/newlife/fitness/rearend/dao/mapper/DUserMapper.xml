@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newlife.fitness.rearend.dao.DUserDAO">
+  <!-- 后台用户基本的resultMap -->
+  <resultMap id="BaseResultMap" type="com.newlife.fitness.entity.DUser">
+    <id column="id" property="id" />
+    <result property="dUserName" column="d_userName" />
+    <result property="dLoginName" column="d_loginName"  />
+    <result property="dPassWord" column="d_passWord" />
+    <result property="dSex" column="d_sex" />
+    <result property="dEmail" column="d_email" />
+    <result property="dPhone" column="d_phone" />
+    <result property="dImgUrl" column="d_imgUrl" />
+    <result property="userRole" column="d_role" />
+    <result property="dMark" column="d_mark" />
+  </resultMap>
+  
+  <!-- 1、入参为实体类根据实体类存在条件查询的方法。 -->
+  <select id="selectByEntity" resultMap="BaseResultMap">
+       select * from d_user
+       <where>
+            <if test="dUserName != null">
+               and d_userName = #{dUserName}
+            </if>
+            <if test="dLoginName != null">
+               and d_loginName = #{dLoginName}
+            </if>
+            <if test="dPassWord != null">
+               and d_passWord = #{dPassWord}
+            </if>
+            <if test="dSex != null">
+               and d_sex = #{dSex}
+            </if>
+            <if test="dEmail != null">
+               and d_email = #{dEmail}
+            </if>
+            <if test="dPhone != null">
+               and d_phone = #{dPhone}
+            </if>
+            <if test="userRole != null">
+               and d_role = #{userRole}
+            </if>
+            <if test="dMark != null">
+               and d_mark = #{dMark}
+            </if>
+       </where>
+  </select>
+  
+  <!-- 2.插入数据的方法 -->
+  <insert id="insert" parameterType="com.newlife.fitness.entity.DUser">
+    insert into d_user
+    values(default,#{dUserName},#{dLoginName},#{dPassWord},#{dSex},#{dEmail},#{dPhone},#{dImgUrl},#{userRole},#{dMark})
+  </insert>
+  
+  <!-- 3.修改数据的方法 -->
+  <update id="update" parameterType="com.newlife.fitness.entity.DUser">
+    update d_user 
+    <set>
+        <if test="dEmail !=null and dEmail !=''">
+            d_email = #{dEmail},
+        </if>
+        <if test="dImgUrl !=null and dImgUrl !=''">
+            d_imgUrl = #{dImgUrl},
+        </if>
+        <if test="dLoginName !=null and dLoginName !=''">
+            d_loginName = #{dLoginName},
+        </if>
+        <if test="dPassWord !=null and dPassWord!=''">
+            d_passWord = #{dPassWord},
+        </if>
+        <if test="dPhone !=null and dPhone!=''">
+            d_phone = #{dPhone},
+        </if>
+        <if test="dSex !=null and dSex!=''">
+            d_sex = #{dSex},
+        </if>
+        <if test="dUserName !=null and dUserName!=''">
+            d_userName = #{dUserName},
+        </if>
+        <if test="userRole !=null and userRole!=''">
+            d_role = #{userRole},
+        </if>
+        <if test="dMark !=null and dMark!=''">
+            d_mark = #{dMark},
+        </if>
+    </set>
+    where id = #{id}
+  </update>
+  
+ 
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newlife.fitness.rearend.dao.AnnounceDAO">
+    <!-- 通知表基本的resultMap -->
+    <resultMap id="BaseResultMap"
+        type="com.newlife.fitness.entity.Announce">
+        <id property="id" column="id" />
+        <result property="content" column="content" />
+        <result property="createDate" column="createDate" />
+        <result property="codeContent" column="codeContent" />
+        <association property="dUser"
+            resultMap="com.newlife.fitness.rearend.dao.DUserDAO.BaseResultMap" />
+    </resultMap>
+
+    <!-- 查找所有的通知 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from announce a
+        left join d_user d on a.dUserId = d.id
+        order by createDate desc
+    </select>
+
+    <!-- 查找前三条通知 -->
+    <select id="selectByLimit3" resultMap="BaseResultMap">
+        select * from announce a
+        left join d_user d on a.dUserId = d.id
+        order by createDate desc
+        limit 3
+    </select>
+
+    <!-- 插入一套数据 -->
+    <insert id="insertInfo">
+        insert into announce values(default,#{content},#{createDate},#{dUser.id},#{codeContent});
+    </insert>
+    
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newlife.fitness.frontend.dao.TrainDAO">
+
+  <!-- 基本的resultMap -->
+  <resultMap id="BaseResultMap" type="Train">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="t_userName" jdbcType="VARCHAR" property="tUsername" />
+    <result column="t_loginName" jdbcType="VARCHAR" property="tLoginname" />
+    <result column="t_password" jdbcType="VARCHAR" property="tPassword" />
+    <result column="t_sex" jdbcType="CHAR" property="tSex" />
+    <result column="t_age" jdbcType="INTEGER" property="tAge" />
+    <result column="t_address" jdbcType="VARCHAR" property="tAddress" />
+    <result column="t_email" jdbcType="VARCHAR" property="tEmail" />
+    <result column="t_phone" jdbcType="CHAR" property="tPhone" />
+    <result column="t_isVip" jdbcType="CHAR" property="tIsvip" />
+    <result column="t_imgUrl" jdbcType="VARCHAR" property="tImgurl" />
+  </resultMap>
+  
+  
+</mapper>

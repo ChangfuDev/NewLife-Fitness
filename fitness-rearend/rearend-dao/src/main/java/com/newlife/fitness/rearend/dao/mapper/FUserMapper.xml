@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newlife.fitness.rearend.dao.FUserDAO">
+
+  <!-- 基本的Map映射  前端用户表 -->
+  <resultMap id="BaseResultMap" type="com.newlife.fitness.entity.FUser">
+    <id column="id" property="id" />
+    <result column="f_userName" property="fUserName" />
+    <result column="f_loginName" property="fLoginName" />
+    <result column="f_password" property="fPassword" />
+    <result column="f_sex" property="fSex" />
+    <result column="f_age" property="fAge" />
+    <result column="f_address" property="fAddress" />
+    <result column="f_email" property="fEmail" />
+    <result column="f_phone" property="fPhone" />
+    <result column="f_isVip" property="fIsVip" />
+    <result column="f_imgUrl" property="fImgUrl" />
+    <result column="f_vipBegiTtime" property="fVipBegiTtime" />
+    <result column="f_vipEndTime" property="fVipEndTime" />
+  </resultMap>
+  
+  <!-- 插入数据的方法 -->
+  <insert id="insert" parameterType="com.newlife.fitness.entity.FUser">
+        insert into f_user
+        values(default,#{fUserName},#{fLoginName},#{fPassword},#{fSex},#{fAge},#{fAddress},#{fEmail},#{fPhone},#{fIsVip},#{fImgUrl},#{fVipBegiTtime},#{fVipEndTime})
+  </insert>
+  
+</mapper>
