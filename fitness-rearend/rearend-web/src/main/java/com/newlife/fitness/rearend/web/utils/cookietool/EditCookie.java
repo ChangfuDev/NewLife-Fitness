@@ -32,8 +32,9 @@ public class EditCookie {
 		 * 只有通过覆盖key的值的形式去除原本的Cookie。路径必须设置。
 		 */
 		public static void del_Cookie(String c_name,HttpServletRequest req,HttpServletResponse res) {
+			System.out.println("ccookienanme=========>"+c_name);
 			for (Cookie c : req.getCookies()) {
-				if(c.getName().equals(c_name.trim())) {
+				if(c.getName().equals(c_name)) {
 					c.setMaxAge(-1);
 					c.setValue("");
 					c.setPath(req.getContextPath()+"/");

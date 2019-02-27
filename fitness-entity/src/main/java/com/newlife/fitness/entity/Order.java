@@ -18,23 +18,9 @@ public class Order implements Serializable {
 	
 	private String isPlay;
 	
-	private FUser fUser;
-
-	public Order() {
-		super();
-	}
-
-	public Order(Integer id, String orderNumber, String orderName, String orderPrice, Date createDate, String isPlay,
-			FUser fUser) {
-		super();
-		this.id = id;
-		this.orderNumber = orderNumber;
-		this.orderName = orderName;
-		this.orderPrice = orderPrice;
-		this.createDate = createDate;
-		this.isPlay = isPlay;
-		this.fUser = fUser;
-	}
+	private Integer fUId;
+	
+	private String fUserName;
 
 	public Integer getId() {
 		return id;
@@ -84,18 +70,20 @@ public class Order implements Serializable {
 		this.isPlay = isPlay;
 	}
 
-	public FUser getfUser() {
-		return fUser;
+	public Integer getfUId() {
+		return fUId;
 	}
 
-	public void setfUser(FUser fUser) {
-		this.fUser = fUser;
+	public void setfUId(Integer fUId) {
+		this.fUId = fUId;
 	}
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", orderNumber=" + orderNumber + ", orderName=" + orderName + ", orderPrice="
-				+ orderPrice + ", createDate=" + createDate + ", isPlay=" + isPlay + ", fUser=" + fUser + "]";
+	public String getfUserName() {
+		return fUserName;
 	}
-	
+
+	public void setfUserName(String fUserName) {
+		this.fUserName = fUserName;
+	}
+
 }

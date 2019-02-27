@@ -24,10 +24,15 @@ public class Comments implements Serializable {
 	private String isAdopt;
 
 	private AuditingType auditingType;
+	
+	private  int  auditing_id;
 
 	private FUser FUser;
 
 	private Forum forum;
+	
+	private int user_id;
+	private int forum_id;
 
 	public Comments() {
 	}
@@ -86,5 +91,29 @@ public class Comments implements Serializable {
 
 	public void setForum(Forum forum) {
 		this.forum = forum;
+	}
+
+	public int getAuditing_id() {
+		return auditing_id;
+	}
+
+	public void setAuditing_id(int auditing_id) {
+		this.auditing_id = auditing_id;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public int getForum_id() {
+		return forum_id;
+	}
+
+	public void setForum_id(int forum_id) {
+		this.forum_id = forum_id;
 	}
 }

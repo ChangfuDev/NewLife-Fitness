@@ -12,21 +12,16 @@ import java.util.List;
  */
 public class Forum implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	private int id;
-
+	private int userid;
 	private String content;
-
 	private String isAdopt;
-
 	private Date postingTime;
-
 	private String title;
-
+	private String content_img;
 	private List<Comments> comments;
-
 	private AuditingType auditingType;
-
 	private FUser FUser;
 
 	public Forum() {
@@ -108,6 +103,22 @@ public class Forum implements Serializable {
 
 	public void setFUser(FUser FUser) {
 		this.FUser = FUser;
+	}
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	public String getContent_img() {
+		return content_img;
+	}
+
+	public void setContent_img(String content_img) {
+		this.content_img = content_img;
 	}
 
 }

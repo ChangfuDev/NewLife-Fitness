@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newlife.fitness.rearend.dao.WebsiteDAO">
+    <resultMap id="BaseResultMap"
+        type="com.newlife.fitness.entity.Website">
+        <result property="id" column="id" />
+        <result property="domainName" column="domainName" />
+        <result property="catchTime" column="catchTime" />
+        <result property="title" column="title" />
+        <result property="description" column="description" />
+        <result property="copyright" column="copyright" />
+        <result property="keyword" column="keyword" />
+    </resultMap>
+    
+    <select id="selectInfo" resultType="com.newlife.fitness.entity.Website">
+        select * from website;
+    </select>
+    
+    <update id="updateInfo">
+        update website
+        <set>
+            <if test="domainName != null and domainName!=''">
+                domainName = #{domainName},
+            </if>
+            <if test="catchTime != null and catchTime!=''">
+                catchTime = #{catchTime},
+            </if>
+            <if test="title != null and title!=''">
+                title = #{title},
+            </if>
+            <if test="description != null and description!=''">
+                description = #{description},
+            </if>
+            <if test="copyright != null and copyright!=''">
+                copyright = #{copyright},
+            </if>
+            <if test="keyword != null and keyword!=''">
+                keyword = #{keyword},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

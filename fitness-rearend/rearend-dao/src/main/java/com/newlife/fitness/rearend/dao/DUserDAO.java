@@ -1,6 +1,10 @@
 package com.newlife.fitness.rearend.dao;
 
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.newlife.fitness.entity.DUser;
 
 public interface DUserDAO {
@@ -41,6 +45,29 @@ public interface DUserDAO {
      * @return 后台管理员用户
      */
     DUser selectByEntity(DUser user) throws Exception;
-
     
+    /**
+     *	查询用户总数量
+     * @param userRole 
+     * @param dUserName 
+     * @return
+     */
+	int selectCount(@Param("dUserName") String dUserName, @Param("userRole")String userRole);
+
+	/**
+	 * 查询用户
+	 * @param limit 
+	 * @param  
+	 * @param userRole 
+	 * @param dUserName 
+	 * @return
+	 */
+	List<DUser> selectDUsers(@Param("dUserName")String dUserName, @Param("userRole")String userRole, @Param("page")Integer page,@Param("limit")Integer limit);
+
+	/**
+	 * 根据id查询用户
+	 * @param id
+	 * @return
+	 */
+	DUser selectDUserById(@Param("id")int id);
 }

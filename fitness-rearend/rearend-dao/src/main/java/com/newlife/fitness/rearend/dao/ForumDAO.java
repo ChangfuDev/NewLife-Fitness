@@ -1,19 +1,25 @@
 package com.newlife.fitness.rearend.dao;
 
+import java.util.List;
 
-import com.newlife.fitness.entity.Forum;
+import org.apache.ibatis.annotations.Param;
+
 
 public interface ForumDAO {
 
-    int deleteByPrimaryKey(Integer id);
+	/**
+	 * 根据用户id查询用户的论坛
+	 * @param userId
+	 * @return
+	 */
+	public List<Integer> selectForumIdByUserId(@Param("userId") int userId);
 
-    int insert(Forum record);
+	/**
+	 * 根据用户id删除相关论坛 userId
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public int delForumByUserId(@Param("userId") int userId);
 
-    int insertSelective(Forum record);
-
-    Forum selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Forum record);
-
-    int updateByPrimaryKey(Forum record);
 }

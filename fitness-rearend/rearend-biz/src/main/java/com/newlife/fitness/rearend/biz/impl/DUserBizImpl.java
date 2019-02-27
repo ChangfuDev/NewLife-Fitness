@@ -1,6 +1,9 @@
 package com.newlife.fitness.rearend.biz.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.newlife.fitness.entity.DUser;
@@ -32,6 +35,31 @@ public class DUserBizImpl implements DUserBiz {
 	@Override
 	public boolean modifyDUser(DUser user) throws Exception {
 		return dUserDao.update(user) == 1;
+	}
+	
+	
+	@Override
+	public int getCount(String dUserName, String userRole) {
+		// TODO Auto-generated method stub
+		return dUserDao.selectCount(dUserName,userRole);
+	}
+
+	@Override
+	public List<DUser> getDUsers(String dUserName, String userRole, Integer page, Integer limit) {
+		// TODO Auto-generated method stub
+		return dUserDao.selectDUsers(dUserName,userRole,(page-1)*limit,limit);
+	}
+
+	@Override
+	public DUser getFUser(int id) {
+		// TODO Auto-generated method stub
+		return dUserDao.selectDUserById(id);
+	}
+
+	@Override
+	public int delDUser(Integer id) {
+		// TODO Auto-generated method stub
+		return dUserDao.deleteByPrimaryKey(id);
 	}
 	
 }

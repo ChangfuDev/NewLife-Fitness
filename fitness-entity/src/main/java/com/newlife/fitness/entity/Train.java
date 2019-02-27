@@ -11,140 +11,144 @@ public class Train implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-
-	private String tAddress;
-
-	private int tAge;
-
-	private String tEmail;
-
-	private String t_imgUrl;
-
-	private String t_isVip;
-
-	private String t_loginName;
-
+	private String tUsername;
+	private String tLoginname;
 	private String tPassword;
-
-	private String tPhone;
-
 	private String tSex;
-
-	private String t_userName;
-
+	private int tAge;
+	private String tAddress;
+	private String tEmail;
+	private String tPhone;
+	private String tIsvip;
+	private String tImgurl;
+	
 	private List<UserTrain> userTrains;
 
 	public Train() {
+		
 	}
-
+	
+	public Train(int id, String tUsername, String tLoginname, String tPassword, String tSex, int tAge, String tAddress,
+			String tEmail, String tPhone, String tIsvip, String tImgurl, List<UserTrain> userTrains) {
+		super();
+		this.id = id;
+		this.tUsername = tUsername;
+		this.tLoginname = tLoginname;
+		this.tPassword = tPassword;
+		this.tSex = tSex;
+		this.tAge = tAge;
+		this.tAddress = tAddress;
+		this.tEmail = tEmail;
+		this.tPhone = tPhone;
+		this.tIsvip = tIsvip;
+		this.tImgurl = tImgurl;
+		this.userTrains = userTrains;
+	}
+	
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getTAddress() {
-		return this.tAddress;
+	public String gettUsername() {
+		return tUsername;
 	}
 
-	public void setTAddress(String tAddress) {
-		this.tAddress = tAddress;
+	public void settUsername(String tUsername) {
+		this.tUsername = tUsername;
 	}
 
-	public int getTAge() {
-		return this.tAge;
+	public String gettLoginname() {
+		return tLoginname;
 	}
 
-	public void setTAge(int tAge) {
-		this.tAge = tAge;
+	public void settLoginname(String tLoginname) {
+		this.tLoginname = tLoginname;
 	}
 
-	public String getTEmail() {
-		return this.tEmail;
+	public String gettPassword() {
+		return tPassword;
 	}
 
-	public void setTEmail(String tEmail) {
-		this.tEmail = tEmail;
-	}
-
-	public String getT_imgUrl() {
-		return this.t_imgUrl;
-	}
-
-	public void setT_imgUrl(String t_imgUrl) {
-		this.t_imgUrl = t_imgUrl;
-	}
-
-	public String getT_isVip() {
-		return this.t_isVip;
-	}
-
-	public void setT_isVip(String t_isVip) {
-		this.t_isVip = t_isVip;
-	}
-
-	public String getT_loginName() {
-		return this.t_loginName;
-	}
-
-	public void setT_loginName(String t_loginName) {
-		this.t_loginName = t_loginName;
-	}
-
-	public String getTPassword() {
-		return this.tPassword;
-	}
-
-	public void setTPassword(String tPassword) {
+	public void settPassword(String tPassword) {
 		this.tPassword = tPassword;
 	}
 
-	public String getTPhone() {
-		return this.tPhone;
+	public String gettSex() {
+		return tSex;
 	}
 
-	public void setTPhone(String tPhone) {
-		this.tPhone = tPhone;
-	}
-
-	public String getTSex() {
-		return this.tSex;
-	}
-
-	public void setTSex(String tSex) {
+	public void settSex(String tSex) {
 		this.tSex = tSex;
 	}
 
-	public String getT_userName() {
-		return this.t_userName;
+	public int gettAge() {
+		return tAge;
 	}
 
-	public void setT_userName(String t_userName) {
-		this.t_userName = t_userName;
+	public void settAge(int tAge) {
+		this.tAge = tAge;
+	}
+
+	public String gettAddress() {
+		return tAddress;
+	}
+
+	public void settAddress(String tAddress) {
+		this.tAddress = tAddress;
+	}
+
+	public String gettEmail() {
+		return tEmail;
+	}
+
+	public void settEmail(String tEmail) {
+		this.tEmail = tEmail;
+	}
+
+	public String gettPhone() {
+		return tPhone;
+	}
+
+	public void settPhone(String tPhone) {
+		this.tPhone = tPhone;
+	}
+
+	public String gettIsvip() {
+		return tIsvip;
+	}
+
+	public void settIsvip(String tIsvip) {
+		this.tIsvip = tIsvip;
+	}
+
+	public String gettImgurl() {
+		return tImgurl;
+	}
+
+	public void settImgurl(String tImgurl) {
+		this.tImgurl = tImgurl;
 	}
 
 	public List<UserTrain> getUserTrains() {
-		return this.userTrains;
+		return userTrains;
 	}
 
 	public void setUserTrains(List<UserTrain> userTrains) {
 		this.userTrains = userTrains;
 	}
 
-	public UserTrain addUserTrain(UserTrain userTrain) {
-		getUserTrains().add(userTrain);
-		userTrain.setTrain(this);
-
-		return userTrain;
+	@Override
+	public String toString() {
+		return "Train [id=" + id + ", tUsername=" + tUsername + ", tLoginname=" + tLoginname + ", tPassword="
+				+ tPassword + ", tSex=" + tSex + ", tAge=" + tAge + ", tAddress=" + tAddress + ", tEmail=" + tEmail
+				+ ", tPhone=" + tPhone + ", tIsvip=" + tIsvip + ", tImgurl=" + tImgurl + ", userTrains=" + userTrains
+				+ "]";
 	}
+	
 
-	public UserTrain removeUserTrain(UserTrain userTrain) {
-		getUserTrains().remove(userTrain);
-		userTrain.setTrain(null);
-
-		return userTrain;
-	}
-
+	
 }

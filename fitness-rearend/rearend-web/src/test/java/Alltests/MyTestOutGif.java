@@ -1,14 +1,10 @@
 package Alltests;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
@@ -17,10 +13,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.newlife.fitness.entity.Announce;
 import com.newlife.fitness.entity.DUser;
-import com.newlife.fitness.entity.FUser;
 import com.newlife.fitness.rearend.biz.AnnounceBiz;
 import com.newlife.fitness.rearend.biz.DUserBiz;
 import com.newlife.fitness.rearend.biz.FUserBiz;
+import com.newlife.fitness.rearend.biz.OrderBiz;
 import com.newlife.fitness.rearend.web.utils.captchatool.GifCaptcha;
 import com.newlife.fitness.rearend.web.utils.captchatool.parent.Captcha;
 import com.newlife.fitness.rearend.web.utils.md5tool.MD5Util;
@@ -35,6 +31,7 @@ public class MyTestOutGif {
 	DUserBiz DUserBean = ctx.getBean(DUserBiz.class);
 	FUserBiz FUserBean = ctx.getBean(FUserBiz.class);
 	AnnounceBiz Anounce = ctx.getBean(AnnounceBiz.class);
+	OrderBiz order = ctx.getBean(OrderBiz.class);
 
 	/**
 	 * 测试Gif图
@@ -77,7 +74,7 @@ public class MyTestOutGif {
 	 * （f_age（随机）16-60），（f_isVip（随机）是-否）），（f_imgUrl（null）），
 	 * （f_vipBegiTtime（2018-12-02 18:37:56）|| null），（'f_vipEndTime'（now）|| null）
 	 */
-	@Test
+	/*@Test
 	public void test_fUserInsert() throws Exception {
 		// 创建文件
 		List<String> content = FileUtils.readLines(new File("e:/fuser10.txt"),"UTF-8");
@@ -117,7 +114,7 @@ public class MyTestOutGif {
 			System.out.println("第"+i+"次 =======>"+FUserBean.addFUser(user));
 			i++;
 		}
-	}
+	}*/
 
 	@SuppressWarnings("deprecation")
 	@Test
@@ -146,7 +143,20 @@ public class MyTestOutGif {
 		anounce.setCreateDate(new Date());
 		anounce.setCodeContent("通知");
 		anounce.setContent("通知");
-		anounce.setdUser(new DUser(1,null));
+//		anounce.setdUser(new DUser(1,null));
 		System.out.println("=========>"+Anounce.addOneInfo(anounce));
+	}
+	
+	@Test
+	public void test_order() throws Exception {
+		/*System.out.println(order.findCount());
+		System.out.println(order.findOrderList(1, 3));*/
+		System.out.println(order.findSumByPrice());
+	}
+	
+	@Test
+	public void test_announceInfo() throws Exception {
+		System.out.println(Anounce.findAllInfo(1, 10));
+		System.out.println(Anounce.findInfoCount());
 	}
 }

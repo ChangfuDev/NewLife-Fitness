@@ -1,0 +1,31 @@
+{
+  "ecmaVersion": 5,
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "doc_comment": {
+      
+    },
+    "angular1": {
+      
+    },
+    "bootstrap": {
+      
+    },
+    "complete_strings": {
+      
+    },
+    "browser-extension": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "browser",
+    "jquery"
+  ]
+}

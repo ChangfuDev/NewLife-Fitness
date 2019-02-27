@@ -4,18 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *	课程表
- *  Course -- 一对多 -- courseVideos（课程视频）
- *  Course -- 一对多 -- userCourses（课程用户）
+ * 课程表 Course -- 一对多 -- courseVideos（课程视频） Course -- 一对多 -- userCourses（课程用户）
  */
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
-
-	private String c_isVip;
-
 	private String cName;
+	private String cIsvip;
+	private  String c_img;
 
 	private List<CourseVideo> courseVideos;
 
@@ -25,27 +22,27 @@ public class Course implements Serializable {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getC_isVip() {
-		return this.c_isVip;
+	public String getcName() {
+		return cName;
 	}
 
-	public void setC_isVip(String c_isVip) {
-		this.c_isVip = c_isVip;
-	}
-
-	public String getCName() {
-		return this.cName;
-	}
-
-	public void setCName(String cName) {
+	public void setcName(String cName) {
 		this.cName = cName;
+	}
+
+	public String getcIsvip() {
+		return cIsvip;
+	}
+
+	public void setcIsvip(String cIsvip) {
+		this.cIsvip = cIsvip;
 	}
 
 	public List<CourseVideo> getCourseVideos() {
@@ -90,6 +87,14 @@ public class Course implements Serializable {
 		userCours.setCourse(null);
 
 		return userCours;
+	}
+
+	public String getC_img() {
+		return c_img;
+	}
+
+	public void setC_img(String c_img) {
+		this.c_img = c_img;
 	}
 
 }

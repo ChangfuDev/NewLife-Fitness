@@ -51,7 +51,7 @@ layui.define(function(exports){
       //今日流量趋势
       {
         title: {
-          text: '今日流量趋势',
+          text: '昨日流量趋势',
           x: 'center',
           textStyle: {
             fontSize: 14
@@ -189,14 +189,21 @@ layui.define(function(exports){
     
     // 订单记录
     table.render({
-      elem: '#LAY-index-topSearch',
-      url: layui.setter.base + 'json/console/top-search.js', //模拟接口
-      page: true,
+      elem: '#LAY-index-topSearch',	//绑定元素
+      url: "http://localhost:8080/rearend-web/fitness-admin/home/getOrderList.do", //模拟接口
+      page: true, //开启分页
+      toolbar:true,// 开启工具栏
+      limit:5,
+      title:"订单表",
       cols: [[
         {type: 'numbers', fixed: 'left'},
-        {field: 'keywords', title: '关键词', minWidth: 300, templet: '<div><a href="https://www.baidu.com/s?wd={{ d.keywords }}" target="_blank" class="layui-table-link">{{ d.keywords }}</div>'},
-        {field: 'frequency', title: '搜索次数', minWidth: 120, sort: true},
-        {field: 'userNums', title: '用户数', sort: true}
+        {field: 'id', title: '唯一标识',hide:true},
+        {field: 'orderNumber', title: '订单号',minWidth:150},
+        {field: 'orderName', title: '订单名称'},
+        {field: 'orderPrice', title: '订单价格', sort: true},
+        {field: 'createDate', title: '下单时间', sort: true,minWidth:180},
+        {field: 'isPlay', title: '是否支付',align:"center"},
+        {field: 'fUserName', title: '下单用户'}
       ]],
       skin: 'line'
     });
@@ -204,15 +211,19 @@ layui.define(function(exports){
     // 全部通知
     table.render({
       elem: '#LAY-index-topCard',
-      url: layui.setter.base + 'json/console/top-card.js', //模拟接口
+      url: "http://localhost:8080/rearend-web/fitness-admin/home/getAnnounceList.do", //模拟接口
       page: true,
+      limit:5,
       cellMinWidth: 120,
+      toolbar:true,// 开启工具栏
+      title:"通知表",
       cols: [[
         {type: 'numbers', fixed: 'left'},
-        {field: 'title', title: '标题', minWidth: 300, templet: '<div><a href="{{ d.href }}" target="_blank" class="layui-table-link">{{ d.title }}</div>'},
-        {field: 'username', title: '发帖者'},
-        {field: 'channel', title: '类别'},
-        {field: 'crt', title: '点击率', sort: true}
+        {field: 'id', title: '通知标识',align:'center'},
+        {field: 'content', title: '文字内容'},
+        {field: 'codeContent', title: '内容'},
+        {field: 'createDate', title: '通知日期',sort: true},
+        {field: 'createUser', title: '创建人'}
       ]],
       skin: 'line'
     });

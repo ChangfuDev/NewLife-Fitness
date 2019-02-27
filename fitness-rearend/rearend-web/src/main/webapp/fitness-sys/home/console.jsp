@@ -16,6 +16,60 @@
 <body>
 	<div class="layui-fluid">
 		<div class="layui-row layui-col-space15">
+			<div class="layui-col-sm6 layui-col-md3">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						访问量 <span class="layui-badge layui-bg-blue layuiadmin-badge">周</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font">3,966</p>
+						<p>
+							总计访问量 <span class="layuiadmin-span-color">0.005万 <i class="layui-inline layui-icon layui-icon-flag"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm6 layui-col-md3">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						下载 <span class="layui-badge layui-bg-cyan layuiadmin-badge">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+						<p class="layuiadmin-big-font">102</p>
+						<p>
+							新下载 <span class="layuiadmin-span-color">10% <i class="layui-inline layui-icon layui-icon-face-smile-b"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm6 layui-col-md3">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						收入 <span class="layui-badge layui-bg-green layuiadmin-badge">年</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font">${orderPrice}</p>
+						<p>
+							总收入 <span class="layuiadmin-span-color">${orderPrice} <i class="layui-inline layui-icon layui-icon-dollar"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-sm6 layui-col-md3">
+				<div class="layui-card">
+					<div class="layui-card-header">
+						活跃用户 <span class="layui-badge layui-bg-orange layuiadmin-badge">月</span>
+					</div>
+					<div class="layui-card-body layuiadmin-card-list">
+
+						<p class="layuiadmin-big-font">${dUserCount}</p>
+						<p>
+							最近一个月 <span class="layuiadmin-span-color">15% <i class="layui-inline layui-icon layui-icon-user"></i></span>
+						</p>
+					</div>
+				</div>
+			</div>
 			<div class="layui-col-md8">
 				<div class="layui-row layui-col-space15">
 					<div class="layui-col-md6">
@@ -27,19 +81,19 @@
 										<ul class="layui-row layui-col-space10">
 											<li class="layui-col-xs3"><a lay-href="home/console.html"> <i class="layui-icon layui-icon-console"></i> <cite>控制台</cite>
 											</a></li>
-											<li class="layui-col-xs3"><a lay-href="home/homepage2.html"> <i class="layui-icon layui-icon-chart"></i> <cite>主页面</cite>
+											<li class="layui-col-xs3"><a lay-href="//www.baidu.com/"> <i class="layui-icon layui-icon-template-1"></i> <cite>百度一下</cite>
 											</a></li>
-											<li class="layui-col-xs3"><a lay-href="component/layer/list.html"> <i class="layui-icon layui-icon-template-1"></i> <cite>弹层</cite>
+											<li class="layui-col-xs3"><a lay-href="${pageContext.request.contextPath }/fitness-manage/user/userlist.jsp"> <i class="layui-icon layui-icon-user"></i> <cite>用户管理</cite>
 											</a></li>
-											<li class="layui-col-xs3"><a layadmin-event="im"> <i class="layui-icon layui-icon-chat"></i> <cite>聊天</cite>
+											<li class="layui-col-xs3"><a lay-href="${pageContext.request.contextPath }/fitness-manage/train/trainlist.jsp"> <i class="layui-icon layui-icon-find-fill"></i> <cite>教练管理</cite>
 											</a></li>
-											<li class="layui-col-xs3"><a lay-href="component/progress/index.html"> <i class="layui-icon layui-icon-find-fill"></i> <cite>进度条</cite>
+											<li class="layui-col-xs3"><a lay-href="${pageContext.request.contextPath }/fitness-manage/train/trainlist.jsp"> <i class="layui-icon layui-icon-survey"></i> <cite>课程管理</cite>
 											</a></li>
-											<li class="layui-col-xs3"><a lay-href="app/workorder/list.html"> <i class="layui-icon layui-icon-survey"></i> <cite>工单</cite>
-											</a></li>
+											<li class="layui-col-xs3"><a lay-href="set/password.html"> <i class="layui-icon layui-icon-auz"></i> <cite>修改密码</cite>
+                                            </a></li>
 											<li class="layui-col-xs3"><a lay-href="set/info.html"> <i class="layui-icon layui-icon-username"></i> <cite>个人信息</cite>
 											</a></li>
-											<li class="layui-col-xs3"><a lay-href="set/website.html"> <i class="layui-icon layui-icon-set"></i> <cite>SEO优化</cite>
+											<li class="layui-col-xs3"><a lay-href="set/website.html"> <i class="layui-icon layui-icon-set"></i> <cite>系统设置</cite>
 											</a></li>
 										</ul>
 									</div>
@@ -50,32 +104,31 @@
 					</div>
 					<div class="layui-col-md6">
 						<div class="layui-card">
-							<div class="layui-card-header">待办事项</div>
+							<div class="layui-card-header">最新消息</div>
 							<div class="layui-card-body">
-
 								<div class="layui-carousel layadmin-carousel layadmin-backlog">
 									<div carousel-item>
 										<ul class="layui-row layui-col-space10">
-											<li class="layui-col-xs6"><a lay-href="app/content/comment.html" class="layadmin-backlog-body">
-													<h3>待审评论</h3>
+											<li class="layui-col-xs6"><a class="layadmin-backlog-body">
+													<h3>最新评论</h3>
 													<p>
 														<cite>66</cite>
 													</p>
 											</a></li>
-											<li class="layui-col-xs6"><a lay-href="app/forum/list.html" class="layadmin-backlog-body">
-													<h3>待审帖子</h3>
+											<li class="layui-col-xs6"><a class="layadmin-backlog-body">
+													<h3>最新帖子</h3>
 													<p>
 														<cite>12</cite>
 													</p>
 											</a></li>
-											<li class="layui-col-xs6"><a lay-href="template/goodslist.html" class="layadmin-backlog-body">
-													<h3>待审商品</h3>
+											<li class="layui-col-xs6"><a class="layadmin-backlog-body">
+													<h3>最新订单</h3>
 													<p>
 														<cite>99</cite>
 													</p>
 											</a></li>
-											<li class="layui-col-xs6"><a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
-													<h3>待发货</h3>
+											<li class="layui-col-xs6"><a href="javascript:;" class="layadmin-backlog-body">
+													<h3>课程数量</h3>
 													<p>
 														<cite>20</cite>
 													</p>
@@ -83,7 +136,7 @@
 										</ul>
 										<ul class="layui-row layui-col-space10">
 											<li class="layui-col-xs6"><a href="javascript:;" class="layadmin-backlog-body">
-													<h3>待审友情链接</h3>
+													<h3>友情链接</h3>
 													<p>
 														<cite style="color: #FF5722;">5</cite>
 													</p>
@@ -127,7 +180,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -207,13 +260,13 @@
 						<div class="layui-carousel layadmin-carousel layadmin-news" data-autoplay="true" data-anim="fade" lay-filter="news">
 							<div carousel-item>
 								<div>
-									<a href="#" target="_blank" class="layui-bg-red">NewLife-Fitness 首页</a>
+									<a href="http://localhost:8080/frontend-web/user/indexshouye" target="_blank" class="layui-bg-red">NewLife-Fitness 首页</a>
 								</div>
 								<div>
-									<a href="#" target="_blank" class="layui-bg-green">NewLife 讨论专区</a>
+									<a href="http://localhost:8080/frontend-web/user/luntan.html" target="_blank" class="layui-bg-green">NewLife 讨论专区</a>
 								</div>
 								<div>
-									<a href="#" target="_blank" class="layui-bg-blue">NewLife 课程区域</a>
+									<a href="http://localhost:8080/frontend-web/user/chen.html" target="_blank" class="layui-bg-blue">NewLife 课程区域</a>
 								</div>
 							</div>
 						</div>
@@ -237,7 +290,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script src="${pageContext.request.contextPath }/layuiadmin/layui/layui.js?t=1"></script>
 	<script>
 		layui.config({

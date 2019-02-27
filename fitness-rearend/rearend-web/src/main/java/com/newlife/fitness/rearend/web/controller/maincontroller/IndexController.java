@@ -2,6 +2,11 @@ package com.newlife.fitness.rearend.web.controller.maincontroller;
 
 
 
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,14 +50,17 @@ public class IndexController {
 	@ResponseBody
 	@RequestMapping(value="closeScreen")
 	public String closeScreen() {
-		DUser dUser= (DUser) ServletTool.getSession().getAttribute(GlobalConstant.login_user);
+		HttpServletRequest req = ServletTool.getRequest();
+		HttpSession session = ServletTool.getSession();
+		ServletContext context = session.getServletContext();
+		DUser dUser= (DUser) session.getAttribute(GlobalConstant.login_user);
 		if(dUser != null) {
-			EditCookie.del_Cookie(dUser.getdLoginName(), ServletTool.getRequest(), ServletTool.getResponse());
-			ServletTool.getSession().removeAttribute(GlobalConstant.login_user);
-			ServletTool.getSession().invalidate();
-			ServletTool.getSession().setAttribute("userLoginName", dUser.getdLoginName());
+			EditCookie.del_Cookie(dUser.getdLoginName(), req, ServletTool.getResponse());
+			session.removeAttribute(GlobalConstant.login_user);
+			session.invalidate();
+			context.setAttribute("userLoginName", dUser.getdLoginName());
 		}
-		return GlobalConstant.success;
+		return "success";
 	}
 	/**
 	 * 退出页面的方法。移除Session属性，销毁Session；

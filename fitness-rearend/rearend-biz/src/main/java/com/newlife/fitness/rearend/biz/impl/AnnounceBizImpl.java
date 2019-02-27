@@ -17,8 +17,8 @@ public class AnnounceBizImpl implements AnnounceBiz{
 	private AnnounceDAO announceDao;
 	
 	@Override
-	public List<Announce> findAllInfo() {
-		return announceDao.selectAll();
+	public List<Announce> findAllInfo(Integer pageNumber,Integer pageCount) {
+		return announceDao.selectAll((pageNumber-1)*pageCount,pageCount);
 	}
 	
 	@Override
@@ -29,6 +29,11 @@ public class AnnounceBizImpl implements AnnounceBiz{
 	@Override
 	public boolean addOneInfo(Announce anounce) {
 		return announceDao.insertInfo(anounce) == 1;
+	}
+
+	@Override
+	public Integer findInfoCount() {
+		return announceDao.selectCount();
 	}
 
 }

@@ -20,6 +20,9 @@ import org.springframework.web.socket.TextMessage;
 import com.newlife.fitness.entity.Announce;
 import com.newlife.fitness.entity.DUser;
 import com.newlife.fitness.rearend.biz.AnnounceBiz;
+import com.newlife.fitness.rearend.biz.DUserBiz;
+import com.newlife.fitness.rearend.biz.FUserService;
+import com.newlife.fitness.rearend.biz.OrderBiz;
 import com.newlife.fitness.rearend.web.utils.GlobalConstant;
 import com.newlife.fitness.rearend.web.utils.ServletTool;
 import com.newlife.fitness.rearend.web.websocket.SendInfoHandler;
@@ -42,6 +45,12 @@ public class ConsoleController {
 	@Resource
 	private AnnounceBiz announceBiz;
 	
+	@Resource 
+	private OrderBiz orderBiz;
+	
+	@Resource
+	private FUserService fUserService;
+	
 	// ----------------------------------------- 设置真实视图 -------------------------------------
 	/** 表示首页控制台真实视图 */
 	private final String page_console = "fitness-sys/home/console";		
@@ -50,6 +59,11 @@ public class ConsoleController {
 	// ----------------------------------------- 设置逻辑视图 -------------------------------------
 	@RequestMapping("console.html")
 	public String goConsole(Model model) {
+		// 添加总用户
+		model.addAttribute("dUserCount", fUserService.getCountByUserNameOrSex(null, null, null));
+		// 添加总价
+		model.addAttribute("orderPrice", orderBiz.findSumByPrice());
+		// 添加通知列表
 		model.addAttribute("announce", announceBiz.findByLimit3());
 		return page_console;
 	}
@@ -79,7 +93,8 @@ public class ConsoleController {
 				announce.setCodeContent(content);
 				announce.setContent(text);
 				announce.setCreateDate(new Date());
-				announce.setdUser(dUser);
+				announce.setCreateUser(dUser.getdUserName());
+				announce.setdUserId(dUser.getId());
 				// 判断是否插入数据库，是否发送通知给其他用户。
 				if(announceBiz.addOneInfo(announce) && infoHandler().sendMessageToUsers(new TextMessage(content))) {
 					map.put("status", GlobalConstant.success);
@@ -88,6 +103,40 @@ public class ConsoleController {
 					map.put("msg", "发送失败，系统错误！请稍候重试。");
 				}
 		}
+		return map;
+	}
+	
+	/**
+	 * 订单分页显示
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="getOrderList.do",produces="application/json;charset=utf-8")
+	public Object getOrderList(@RequestParam Integer page,@RequestParam Integer limit) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("msg" , null);
+		map.put("code", 0);
+		map.put("data", orderBiz.findOrderList(page, limit));
+		map.put("count",orderBiz.findCount());
+		return map;
+	}
+	
+	/**
+	 * 通知分页显示
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="getAnnounceList.do",produces="application/json;charset=utf-8")
+	public Object getAnnounceList(@RequestParam Integer page,@RequestParam Integer limit) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("msg" , null);
+		map.put("code", 0);
+		map.put("data", announceBiz.findAllInfo(page, limit));
+		map.put("count",announceBiz.findInfoCount());
 		return map;
 	}
 	

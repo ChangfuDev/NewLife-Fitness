@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -171,15 +172,17 @@ public class LoginController {
 	@ResponseBody
 	@RequestMapping(value="/openScreen")
 	public String openScreen(@RequestParam String pass,@RequestParam Integer number) throws Exception {
+		ServletContext context = ServletTool.getSession().getServletContext();
 		// 通过锁屏传入的登录的UserLoginName
-		String userLoginName = (String) ServletTool.getSession().getAttribute("userLoginName");
+		String userLoginName = (String) context.getAttribute("userLoginName");
+		System.out.println(userLoginName);
 		// 当密码不是空串或者null，并且数字不为空，<=3的时候才能进行解锁
 		if(!StringUtils.isBlank(pass)) {
 			// 判断解锁的次数，如果超过清空Cookie；
 			if(number!=null && number<3) {
 				DUser user = dUserBiz.getLoginDUser(new DUser(userLoginName, MD5Util.md5Pass5(pass)));
-				cookie_name = user.getdLoginName();	// 标识
 				if(user != null && user.getId() != null) {
+					cookie_name = user.getdLoginName();	// 标识
 					EditCookie.add_Cookie(user.getdLoginName(),user.getdPassWord(),ServletTool.getRequest(),ServletTool.getResponse());
 					ServletTool.getSession().setAttribute(GlobalConstant.login_user, user);
 					return GlobalConstant.success;
@@ -189,6 +192,7 @@ public class LoginController {
 				return GlobalConstant.fail;
 			}
 		}
+		context.removeAttribute("userLoginName");
 		return GlobalConstant.error;
 	}
 	

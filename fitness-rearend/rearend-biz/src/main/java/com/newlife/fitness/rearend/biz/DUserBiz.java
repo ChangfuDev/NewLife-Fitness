@@ -1,7 +1,16 @@
 package com.newlife.fitness.rearend.biz;
 
+import java.util.List;
+
 import com.newlife.fitness.entity.DUser;
 
+/**
+ * 
+ * @ClassName: DUserBiz  
+ * @Description: TODO
+ * @author Unruly  
+ * @date 2019年1月12日
+ */
 public interface DUserBiz {
 	
 	/**
@@ -27,4 +36,37 @@ public interface DUserBiz {
 	 * @throws Exception
 	 */
 	boolean modifyDUser(DUser user) throws Exception;
+	
+	/**
+	 * 根据id查询
+	 * @param id
+	 * @return
+	 */
+	DUser getFUser(int id);
+
+	/**
+	 * 删除管理员
+	 * @param id
+	 * @return
+	 */
+	int delDUser(Integer id);
+	
+	/**
+	 * 查询所有用户
+	 * @param limit 
+	 * @param page 
+	 * @param userRole 
+	 * @param dUserName 
+	 * @return
+	 */
+	List<DUser> getDUsers(String dUserName, String userRole, Integer page, Integer limit);
+	
+	
+	/**
+	 * 获取用户总数
+	 * @param dUserName
+	 * @param userRole
+	 * @return
+	 */
+	int getCount(String dUserName,String userRole);
 }

@@ -14,6 +14,8 @@ public class CourseVideo implements Serializable {
 	private String title;
 
 	private String videoUrl;
+	
+	private int courseId;
 
 	private Course course;
 
@@ -42,6 +44,16 @@ public class CourseVideo implements Serializable {
 
 	public void setVideoUrl(String videoUrl) {
 		this.videoUrl = videoUrl;
+	}
+	
+	
+
+	public int getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
 	}
 
 	public Course getCourse() {

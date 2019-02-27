@@ -13,8 +13,9 @@ public class Announce implements Serializable{
 	private Integer id;
 	private String content;
 	private Date createDate;
-	private DUser dUser;
+	private Integer dUserId;
 	private String codeContent;
+	private String createUser;
 	
 	public Integer getId() {
 		return id;
@@ -34,19 +35,7 @@ public class Announce implements Serializable{
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public DUser getdUser() {
-		return dUser;
-	}
-	public void setdUser(DUser dUser) {
-		this.dUser = dUser;
-	}
-	public Announce(Integer id, String content, Date createDate, DUser dUser) {
-		super();
-		this.id = id;
-		this.content = content;
-		this.createDate = createDate;
-		this.dUser = dUser;
-	}
+	
 	public Announce() {
 		super();
 	}
@@ -54,13 +43,23 @@ public class Announce implements Serializable{
 	public String getCodeContent() {
 		return codeContent;
 	}
+	
 	public void setCodeContent(String codeContent) {
 		this.codeContent = codeContent;
 	}
-	@Override
-	public String toString() {
-		return "Announce [id=" + id + ", content=" + content + ", createDate=" + createDate + ", dUser=" + dUser
-				+ ", codeContent=" + codeContent + "]";
+	
+	public Integer getdUserId() {
+		return dUserId;
 	}
 	
+	public void setdUserId(Integer dUserId) {
+		this.dUserId = dUserId;
+	}
+	
+	public String getCreateUser() {
+		return createUser;
+	}
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
+	}
 }

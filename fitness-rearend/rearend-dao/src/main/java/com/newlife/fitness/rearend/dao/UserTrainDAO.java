@@ -1,19 +1,14 @@
 package com.newlife.fitness.rearend.dao;
 
+import org.apache.ibatis.annotations.Param;
 
-import com.newlife.fitness.entity.UserTrain;
 
 public interface UserTrainDAO {
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(UserTrain record);
-
-    int insertSelective(UserTrain record);
-
-    UserTrain selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(UserTrain record);
-
-    int updateByPrimaryKey(UserTrain record);
+	/**
+	 * 根据用户id删除教练预约信息
+	 * @param userId
+	 * @return
+	 */
+	public int delUserTrainByUserId(@Param("userId")int userId);
 }
